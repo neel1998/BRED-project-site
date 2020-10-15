@@ -26,6 +26,39 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyAxd2XTJaD1kDg-sv8nE3NVrhObjhU9uXU",
+        authDomain: "bred-eb9d4.firebaseapp.com",
+        databaseURL: "https://bred-eb9d4.firebaseio.com",
+        projectId: "bred-eb9d4",
+        storageBucket: "bred-eb9d4.appspot.com",
+        messagingSenderId: "321263422287",
+        appId: "1:321263422287:web:ea9a74e1ae61dc138b533a",
+        measurementId: "G-QWX23W8ESM"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    function writeData(){
+        firebase.database().ref("User").set({
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+
+        });
+    }
+    firebase.analytics();
+    </script>
     <!-- ? Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -55,23 +88,24 @@
 
             <div class="form-input">
                 <label for="name">Full name</label>
-                <input  type="text" name="name" placeholder="Full name">
+                <input  type="text" name="name" placeholder="name" id="name">
             </div>
             <div class="form-input">
                 <label for="name">Email Address</label>
-                <input type="email" name="email" placeholder="Email Address">
+                <input type="email" name="email" placeholder="email" id="email">
             </div>
             <div class="form-input">
                 <label for="name">Password</label>
-                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="password" placeholder="password" id="password">
             </div>
             <div class="form-input">
                 <label for="name">Confirm Password</label>
-                <input type="password" name="password" placeholder="Confirm Password">
+                <input type="password" name="password" placeholder="ConfirmPassword">
             </div>
-            <div class="form-input pt-30">
-                <input type="submit" name="submit" value="Registration">
-            </div>
+            <!-- <div class="form-input pt-30"> -->
+                <!-- <input type="submit" name="submit" value="Registration"> -->
+                <button onclick = "writeData()">Submit</button>
+            <!-- </div> -->
             <!-- Forget Password -->
             <a href="login.html" class="registration">login</a>
         </div>
@@ -133,5 +167,6 @@
 
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js"></script>
+
     </body>
 </html>
